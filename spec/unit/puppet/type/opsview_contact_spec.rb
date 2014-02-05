@@ -29,7 +29,36 @@ describe opsview_contact do
   describe ':fullname' do
     it "should have no default" do
       res = @class.new(:name => "mr-foo-bar")
-      res.parameters[:action].should == nil
+      res.parameters[:fullname].should == nil
     end
   end
+
+  describe ':reload_opsview' do
+    it "should have no default" do
+      res = @class.new(:name => "mr-foo-bar")
+      res.parameters[:reload_opsview].should == nil
+    end
+  end
+
+  describe ':role' do
+    it "should have no default" do
+      res = @class.new(:name => "mr-foo-bar")
+      res.parameters[:role].should == nil
+    end
+  end
+
+  describe ':encrypted_password' do
+    it "should have no default" do
+      res = @class.new(:name => "mr-foo-bar")
+      res.parameters[:encrypted_password].should == nil
+    end
+  end
+
+  describe ':language' do
+    it "should have no default" do
+      res = @class.new(:name => "mr-foo-bar")
+      res.parameters[:language].should == nil
+    end
+  end
+
 end
