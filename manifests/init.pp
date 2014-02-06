@@ -2,9 +2,7 @@ class opsview {
   
   file { '/etc/puppet/opsview.conf':
     ensure  => file,
-    content => 'url: http://example.com/rest
-                username: foobar
-                password: foobaz',
+    content => template('opsview/etc/puppet/opsview.conf.erb'),
   }
 
 }

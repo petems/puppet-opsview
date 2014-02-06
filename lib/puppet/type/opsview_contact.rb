@@ -11,6 +11,11 @@ Puppet::Type.newtype(:opsview_contact) do
   end
   newproperty(:fullname) do
     desc "Full name of the user"
+    validate do |value|
+      unless value =~ /^\w+/
+        raise ArgumentError, "%s is not a valid full name" % value
+      end
+    end
   end
   newproperty(:description) do
     desc "Short description for the contact"

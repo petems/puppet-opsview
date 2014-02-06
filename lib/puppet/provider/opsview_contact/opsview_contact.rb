@@ -210,7 +210,7 @@ Puppet::Type.type(:opsview_contact).provide :opsview, :parent => Puppet::Provide
     json = '
      {
         "name" : "puppet",
-        "fullname" : "",
+        "fullname" : "puppet",
         "description" : "",
         "encrypted_password" : "$apr1$HTQogYE7$09TNcZWa/WzoBXdUF6Iyr1",
         "realm" : "local",

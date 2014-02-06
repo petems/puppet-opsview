@@ -27,9 +27,8 @@ describe opsview_contact do
   end
 
   describe ':fullname' do
-    it "should have no default" do
-      res = @class.new(:name => "mr-foo-bar")
-      res.parameters[:fullname].should == nil
+    it 'should not accept a name with non-ASCII chars' do
+      lambda { @resource[:fullname] = '%*#^(#$' }.should raise_error(Puppet::Error)
     end
   end
 
