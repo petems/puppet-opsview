@@ -64,7 +64,7 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
           :notification_interval => node["notification_interval"],
           :full_json     => node,
           :ensure        => :present }
-          
+
 #:snmp_max_msg_size => node["snmp_max_msg_size"],
 
     # optional properties
@@ -79,21 +79,21 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
     end
     if defined? node["snmp_max_msg_size"]
       case node["snmp_max_msg_size"].to_s
-        when "0" then 
+        when "0" then
           p[:snmp_max_msg_size] = "default"
-        when "1023" then 
+        when "1023" then
           p[:snmp_max_msg_size] = "1Kio"
-        when "2047" then 
+        when "2047" then
           p[:snmp_max_msg_size] = "2Kio"
-        when "4095" then 
+        when "4095" then
           p[:snmp_max_msg_size] = "4Kio"
-        when "8191" then 
+        when "8191" then
           p[:snmp_max_msg_size] = "8Kio"
-        when "16383" then 
+        when "16383" then
           p[:snmp_max_msg_size] = "16Kio"
-        when "32767" then 
+        when "32767" then
           p[:snmp_max_msg_size] = "32Kio"
-        when "65535" then 
+        when "65535" then
           p[:snmp_max_msg_size] = "64Kio"
       end
     end
@@ -101,11 +101,11 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
       case node["tidy_ifdescr_level"].to_s
         when "0" then
           p[:tidy_ifdescr_level] = "off"
-        when "1" then 
+        when "1" then
           p[:tidy_ifdescr_level] = "level1"
-        when "2" then 
+        when "2" then
           p[:tidy_ifdescr_level] = "level2"
-        when "3" then 
+        when "3" then
           p[:tidy_ifdescr_level] = "level3"
       end
     end
@@ -141,10 +141,10 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
     else
       @updated_json = default_node
     end
- 
+
     @property_hash.delete(:groups)
     @node_properties.delete(:groups)
- 
+
     # Update the node's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -179,21 +179,21 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
     end
 
     case @property_hash[:snmp_max_msg_size].to_s
-      when "default" then 
+      when "default" then
         @updated_json["snmp_max_msg_size"] = 0
-      when "1Kio" then 
+      when "1Kio" then
         @updated_json["snmp_max_msg_size"] = 1023
-      when "2Kio" then 
+      when "2Kio" then
         @updated_json["snmp_max_msg_size"] = 2047
-      when "4Kio" then 
+      when "4Kio" then
         @updated_json["snmp_max_msg_size"] = 4095
-      when "8Kio" then 
+      when "8Kio" then
         @updated_json["snmp_max_msg_size"] = 8191
-      when "16Kio" then 
+      when "16Kio" then
         @updated_json["snmp_max_msg_size"] = 16383
-      when "32Kio" then 
+      when "32Kio" then
         @updated_json["snmp_max_msg_size"] = 32767
-      when "64Kio" then 
+      when "64Kio" then
         @updated_json["snmp_max_msg_size"] = 65535
     end
 
@@ -229,25 +229,25 @@ Puppet::Type.type(:opsview_monitored).provide :opsview, :parent => Puppet::Provi
         @updated_json["servicechecks"] << {:name => sc}
       end
     end
-    
+
     @updated_json["keywords"] = []
     if @property_hash[:keywords]
       @property_hash[:keywords].each do |kw|
         @updated_json["keywords"] << {:name => kw}
       end
     end
-    
+
     @updated_json["parents"] = []
     if @property_hash[:parents]
       @property_hash[:parents].each do |pa|
         @updated_json["parents"] << {:name => pa}
       end
     end
-    
+
     if not @property_hash[:monitored_by].to_s.empty?
       @updated_json["monitored_by"]["name"] = @property_hash[:monitored_by]
     end
-  
+
     put @updated_json.to_json
 
     if defined? @resource[:reload_opsview]

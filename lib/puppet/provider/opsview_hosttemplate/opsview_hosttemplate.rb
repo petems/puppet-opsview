@@ -87,7 +87,7 @@ Puppet::Type.type(:opsview_hosttemplate).provide :opsview, :parent => Puppet::Pr
     else
       @updated_json = default_hosttemplate
     end
- 
+
     # Update the hosttemplate's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -103,7 +103,7 @@ Puppet::Type.type(:opsview_hosttemplate).provide :opsview, :parent => Puppet::Pr
     if not @property_hash["managementurls"].to_s.empty?
       @updated_json["managementurls"]["name"] = @property_hash[:managementurls]
     end
-  
+
     # Flush changes:
     put @updated_json.to_json
 

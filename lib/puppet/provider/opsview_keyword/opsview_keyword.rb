@@ -50,7 +50,7 @@ Puppet::Type.type(:opsview_keyword).provide :opsview, :parent => Puppet::Provide
           :full_json => keyword,
           :ensure    => :present }
 
-    
+
      [:description, :all_hosts, :all_servicechecks, :style].each do |property|
       if defined? keyword[property.id2name]
         p[property] = keyword[property.id2name]
@@ -93,7 +93,7 @@ Puppet::Type.type(:opsview_keyword).provide :opsview, :parent => Puppet::Provide
     else
       @updated_json = default_keyword
     end
- 
+
     # Update the keyword's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -111,7 +111,7 @@ Puppet::Type.type(:opsview_keyword).provide :opsview, :parent => Puppet::Provide
         end
       end
     end
-  
+
     # Flush changes:
     put @updated_json.to_json
 

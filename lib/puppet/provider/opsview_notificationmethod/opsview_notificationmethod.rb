@@ -91,7 +91,7 @@ Puppet::Type.type(:opsview_notificationmethod).provide :opsview, :parent => Pupp
     else
       @updated_json = default_notificationmethod
     end
- 
+
     # Update the notificationmethod's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -108,7 +108,7 @@ Puppet::Type.type(:opsview_notificationmethod).provide :opsview, :parent => Pupp
     if not @property_hash[:contact_variables].to_s.empty?
       @updated_json["contact_variables"] = @property_hash[:contact_variables]
     end
-  
+
     # Flush changes:
     put @updated_json.to_json
 

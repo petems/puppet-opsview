@@ -86,7 +86,7 @@ Puppet::Type.type(:opsview_hostgroup).provide :opsview, :parent => Puppet::Provi
     else
       @updated_json = default_hostgroup
     end
- 
+
     # Update the hostgroup's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -94,7 +94,7 @@ Puppet::Type.type(:opsview_hostgroup).provide :opsview, :parent => Puppet::Provi
       @updated_json["parent"]["name"] = @property_hash[:parent]
     end
     @updated_json["name"] = @resource[:hostgroup]
-  
+
     # Flush changes:
     put @updated_json.to_json
 

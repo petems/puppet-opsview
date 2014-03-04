@@ -93,7 +93,7 @@ Puppet::Type.type(:opsview_role).provide :opsview, :parent => Puppet::Provider::
     else
       @updated_json = default_role
     end
- 
+
     # Update the role's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -112,7 +112,7 @@ Puppet::Type.type(:opsview_role).provide :opsview, :parent => Puppet::Provider::
         end
       end
     end
-  
+
     # Flush changes:
     put @updated_json.to_json
 

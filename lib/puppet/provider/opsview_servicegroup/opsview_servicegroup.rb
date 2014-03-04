@@ -81,12 +81,12 @@ Puppet::Type.type(:opsview_servicegroup).provide :opsview, :parent => Puppet::Pr
     else
       @updated_json = default_servicegroup
     end
- 
+
     # Update the servicegroup's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
     @updated_json["name"] = @resource[:name]
-  
+
     # Flush changes:
     put @updated_json.to_json
 
@@ -160,7 +160,7 @@ Puppet::Type.type(:opsview_servicegroup).provide :opsview, :parent => Puppet::Pr
     json = '
      {
          "name" : "Puppet - Unknown"
-     }' 
+     }'
 
     JSON.parse(json.to_s)
   end

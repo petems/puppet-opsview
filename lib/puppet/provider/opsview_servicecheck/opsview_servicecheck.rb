@@ -103,7 +103,7 @@ Puppet::Type.type(:opsview_servicecheck).provide :opsview, :parent => Puppet::Pr
     else
       @updated_json = default_servicecheck
     end
- 
+
     # Update the servicecheck's JSON values based on any new params.  Sadly due to the
     # structure of the JSON vs the flat nature of the puppet properties, this
     # is a bit of a manual task.
@@ -144,7 +144,7 @@ Puppet::Type.type(:opsview_servicecheck).provide :opsview, :parent => Puppet::Pr
         @updated_json[property.id2name] = @property_hash[property]
       end
     end
-  
+
     # Flush changes:
     put @updated_json.to_json
 
