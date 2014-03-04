@@ -27,12 +27,12 @@ require File.join(File.dirname(__FILE__), '..', 'opsview')
 begin
   require 'json'
 rescue LoadError => e
-  Puppet.info "You need the `json` gem for communicating with Opsview servers."
+  Puppet.error "You need the `json` gem for communicating with Opsview servers."
 end
 begin
   require 'rest-client'
 rescue LoadError => e
-  Puppet.info "You need the `rest-client` gem for communicating wtih Opsview servers."
+  Puppet.error "You need the `rest-client` gem for communicating wtih Opsview servers."
 end
 
 require 'puppet'
